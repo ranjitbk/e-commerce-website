@@ -1,0 +1,214 @@
+// stylelint-disable selector-no-qualifying-type, selector-max-compound-selectors
+
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the form elements of the site
+// -----------------------------------------------------------------------------
+
+html {
+	scroll-behavior: smooth;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="file"],
+input[type="search"],
+textarea,
+select {
+	@include transition(border-color);
+	border: 1px solid currentColor;
+	background-color: transparent;
+	width: 100%;
+	min-width: 0;
+	padding: 2px 18px;
+	border-radius: 0;
+	appearance: none;
+	height: 42px;
+	margin-bottom: 22px;
+	border: 1px solid $black;
+	color: $black;
+	font-size: 14px;
+
+	@include media(">=tablet") {
+		height: 3.4375vw;
+		margin-bottom: 2.7083vw;
+		font-size: 0.8333vw;
+		padding: 0.5208vw 2.604166666vw;
+	}
+
+	&:focus,
+	&:hover {
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+input[type="number"] {
+	appearance: textfield;
+
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		appearance: none;
+		margin: 0;
+	}
+}
+
+input[type="submit"],
+button[type="submit"], {
+	@include transition(background-color color);
+	background-color: $black;
+	color: $white;
+	border: 0;
+	padding: 2px 18px;
+	height: 42px;
+	text-transform: uppercase;
+	cursor: pointer;
+	border: 1px solid $black;
+	border-radius: 0;
+	font-size: 14px;
+
+	@include media(">=tablet") {
+		padding: 0.5208vw 2.604166666vw;
+		height: 3.4375vw;
+		font-size: 0.8333vw;
+
+	}
+
+	&:hover {
+		background-color: $white;
+		color: $black;
+	}
+}
+
+textarea {
+	height: 238px;
+	padding: 15px 18px;
+
+	@include media(">=tablet") {
+		height: 12.3958vw;
+	}
+}
+
+input[type="file"] {
+	padding: 8px 15px;
+
+	@include media(">=tablet") {
+		padding: 7px 15px;
+	}
+	@include media(">=tablet") {
+		padding: 0.7813vw;
+	}
+}
+
+span.label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 10px;
+
+	@include media(">=tablet") {
+		margin-bottom: 0.5625vw;
+	}
+
+	&.v-hidden {
+		opacity: 0;
+		display: none;
+
+		@include media(">=tablet") {
+			display: block;
+		}
+	}
+}
+
+.checkbox {
+	input {
+		width: 20px;
+		height: 20px;
+		margin-right: 15px;
+		position: relative;
+		cursor: pointer;
+
+		@include media(">=tablet") {
+			width: 1.875vw;
+			height: 1.875vw;
+			margin-right: 1.8229vw;
+		}
+
+		+ span {
+			flex: 1;
+		}
+
+		&:checked {
+			&:after {
+				display: block;
+			}
+		}
+
+		&:before,
+		&:after {
+			content: "";
+			border: 1px solid $black;
+		}
+
+		&:before {
+			width: 20px;
+			height: 20px;
+			display: block;
+			background-color: $white;
+
+			@include media(">=tablet") {
+				width: 1.875vw;
+				height: 1.875vw;
+			}
+		}
+
+		&:after {
+			position: absolute;
+			width: 12px;
+			height: 6px;
+			border-top: 0;
+			border-right: 0;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(-45deg);
+			display: none;
+
+			@include media(">=tablet") {
+				width: 0.833333333vw;
+				height: 0.41666666vw;
+			}
+		}
+	}
+
+	span {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+
+		&.wpcf7-not-valid-tip {
+			top: 0;
+			width: 100%;
+		}
+	}
+}
+
+.career-form {
+	.wpcf7-not-valid-tip {
+		position: relative;
+		top: -24px;
+
+		@include media(">=tablet") {
+			top: -2.3438vw;
+		}
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+	}
+
+	.wpcf7 form .wpcf7-response-output {
+		margin: 0;
+		padding: 0;
+		border: 0;
+	}
+}

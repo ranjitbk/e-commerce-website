@@ -1,0 +1,66 @@
+.fade {
+    @include transition(background-color color opacity visibility transform box-shadow, 1.5s);
+
+    @include media(">=desktop") {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &-down {
+        @include media(">=desktop") {
+            transform: translateY(-3.90625vw);
+        }
+    }
+
+    &-right {
+        @include media(">=desktop") {
+            transform: translateX(-3.90625vw);
+        }
+    }
+
+    &-up {
+        @include media(">=desktop") {
+            transform: translateY(3.90625vw) !important;
+        }
+    }
+
+    &-left {
+        @include media(">=desktop") {
+            transform: translateX(3.90625vw);
+        }
+    }
+
+    &-zoom {
+        @include media(">=desktop") {
+            transform: scale(0.7);
+        }
+    }
+}
+
+$delay: 0.3s;
+
+.view-item {
+    &.in-view {
+        @include media(">=desktop") {
+            opacity: 1;
+            visibility: visible;
+            transform: none !important;
+        }
+
+        .fade {
+            @include media(">=desktop") {
+                opacity: 1;
+                visibility: visible;
+                transform: none !important;
+            }
+
+            @for $i from 1 through 10 {
+                &:nth-child(#{$i + 1}) {
+                    @include media(">=desktop") {
+                        transition-delay: $delay * $i;
+                    }
+                }
+            }
+        }
+    }
+}

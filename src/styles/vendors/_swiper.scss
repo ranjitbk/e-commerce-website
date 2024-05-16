@@ -1,0 +1,75 @@
+@import "swiper/swiper.scss";
+
+.slide {
+	outline: none;
+}
+
+.swiper-wrapper {
+	transition-timing-function: linear;
+	box-sizing: border-box;
+}
+
+.swiper-button {
+	@include transition(background-color);
+	background-color: rgba($black, 0.2);
+	border: 0;
+	color: $white;
+	margin: 0 10px;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 9999;
+
+	@include media('>=tablet') {
+		width: 3.125vw;
+		height: 3.125vw;
+		margin: 0 0.5208vw;
+	}
+
+	&:hover {
+		background-color: $black;
+	}
+
+
+	&.swiper-button-prev {
+		left: 0;
+	}
+
+	&.swiper-button-next {
+		right: 0;
+	}
+}
+
+
+.swiper-pagination {
+	@extend .flex;
+	justify-content: center;
+	cursor: pointer;
+
+	.swiper-pagination-bullet {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		border: 1px solid $black;
+		margin: 0 5px;
+
+		@include media('>=tablet') {
+			width: 1.0417vw;
+			height: 1.0417vw;
+			margin: 0 0.5208vw;
+		}
+
+		&.swiper-pagination-bullet-active {
+			background-color: $black;
+		}
+	}
+}

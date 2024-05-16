@@ -1,0 +1,218 @@
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+ .visually-hidden {
+ 	border: 0;
+ 	clip: rect(0, 0, 0, 0);
+ 	height: 1px;
+ 	margin: -1px;
+ 	overflow: hidden;
+ 	padding: 0;
+ 	position: absolute;
+ 	white-space: nowrap;
+ 	width: 1px;
+ }
+
+/*
+ * Extends the .visually-hidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+ .visually-hidden.focusable:active,
+ .visually-hidden.focusable:focus {
+ 	clip: auto;
+ 	height: auto;
+ 	margin: 0;
+ 	overflow: visible;
+ 	position: static;
+ 	white-space: inherit;
+ 	width: auto;
+ }
+
+ %listreset,
+ .list-unstyled {
+ 	list-style: none;
+ 	padding: 0;
+ 	margin: 0;
+ }
+
+ .flex {
+ 	display: flex;
+ 	flex-wrap: wrap;
+ }
+
+ .tb-flex {
+ 	@include media(">=tablet") {
+ 		display: flex;
+ 		flex-wrap: wrap;
+ 	}
+ }
+
+ .lg-flex {
+ 	@include media(">=desktop") {
+ 		display: flex;
+ 		flex-wrap: wrap;
+ 	}
+ }
+
+ .three-columns {
+ 	@extend .tb-flex;
+
+ 	@include media(">=desktop") {
+ 		margin: 0 -1.458333333vw;
+ 	}
+
+ 	.column {
+ 		@include media(">=tablet") {
+ 			width: calc(50% - 2.9166666666vw);
+ 			margin: 0 1.458333333vw;
+ 		}
+ 		@include media(">=desktop") {
+ 			width: calc(33.33% - 2.9166666666vw);
+ 		}
+ 	}
+ }
+
+ img {
+ 	max-width: 100%;
+ 	height: auto;
+ }
+
+ .bg-img {
+ 	background-size: cover;
+ 	background-position: 50% 50%;
+
+ 	&.bg-contain {
+ 		background-size: contain;
+ 		background-repeat: no-repeat;
+ 		background-position: 50% 0;
+ 	}
+ }
+
+ .hidden {
+ 	display: none;
+ }
+
+ .text-sm {
+ 	@include media(">=desktop") {
+ 		font-size: 1.1458vw;
+ 		line-height: 1.59;
+ 	}
+ }
+
+ .justify-content-start {
+ 	justify-content: flex-start;
+ }
+ .justify-content-end {
+ 	justify-content: flex-end;
+ }
+ .justify-content-center {
+ 	justify-content: center;
+ }
+ .justify-content-between {
+ 	justify-content: space-between;
+ }
+ .justify-content-around {
+ 	justify-content: space-around;
+ }
+ .align-items-start {
+ 	align-items: flex-start;
+ }
+ .align-items-end {
+ 	align-items: flex-end;
+ }
+ .align-items-center {
+ 	align-items: center;
+ }
+ .align-content-start {
+ 	align-content: flex-start;
+ }
+ .align-content-end {
+ 	align-content: flex-end;
+ }
+ .align-content-center {
+ 	align-content: center;
+ }
+ .align-content-between {
+ 	align-content: space-between;
+ }
+ .align-content-around {
+ 	align-content: space-around;
+ }
+
+ .align-self-auto {
+ 	align-self: auto;
+ }
+ .align-self-start {
+ 	align-self: flex-start;
+ }
+ .align-self-end {
+ 	align-self: flex-end;
+ }
+ .align-self-center {
+ 	align-self: center;
+ }
+ .flex-column {
+ 	flex-direction: column;
+ }
+ .flex-row-reverse {
+ 	flex-direction: row-reverse;
+ }
+
+ .text-center {
+ 	text-align: center;
+ }
+
+ .font-light {
+ 	font-weight: 300;
+ }
+
+ .text-xs {
+ 	line-height: 1.5;
+
+ 	@include media(">=desktop") {
+ 		font-size: 1.0417vw;
+ 	}
+ }
+
+ .hide-for-small {
+ 	display: none;
+
+ 	@include media(">=tablet") {
+ 		display: block;
+ 	}
+ }
+
+ .hide-for-desktop {
+ 	@include media(">=tablet") {
+ 		display: none;
+ 	}
+ }
+
+ .whole-link  {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	right: 0;
+ 	bottom: 0;
+ }
+
+ .accordion {
+ 	.sub-menu,
+ 	.slide {
+ 		@include transition(height padding);
+ 		overflow: hidden;
+
+ 		&.hide {
+ 			height: 0;
+ 			padding: 0;
+ 		}
+ 	}
+ }

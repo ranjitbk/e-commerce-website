@@ -1,0 +1,96 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common layout of the site
+// -----------------------------------------------------------------------------
+
+body {
+	background-color: $body-bg;
+
+	&.nav-active  {
+		overflow: hidden;
+	}
+}
+
+.wrapper {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+
+
+}
+
+// skip links
+.accessibility {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+
+	&:focus {
+		position: static;
+		width: auto;
+		height: auto;
+	}
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 20px;
+	width: 100%;
+
+	@include media(">=desktop") {
+		padding: 0 1.5625vw;
+		max-width: 80.7291666666vw;
+	}
+}
+
+.notice-block {
+	background-color: $black;
+	color: $white;
+	padding: 10px 0;
+
+	@include media('>=tablet') {
+		padding: 1.0417vw 0;
+	}
+}
+
+.site-section {
+	padding: 50px 0;
+
+	@include media('>=tablet') {
+		padding: 5.2083vw 0;
+	}
+}
+
+.back-to-top {
+	@include transition(opacity visibility);
+	position: fixed;
+	right: 25px;
+	bottom: 25px;
+	background-color: $black;
+	color: $white;
+	width: 40px;
+	height: 40px;
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+	visibility: hidden;
+	opacity: 0;
+	box-shadow: 0 0 8px 2px rgba($black, 0.2);
+	z-index: 99999;
+
+	@include media(">=desktop") {
+		width: 3.125vw;
+		height: 3.125vw;
+		padding: 0.7813vw;
+	}
+
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+}
